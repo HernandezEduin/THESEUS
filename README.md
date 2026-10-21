@@ -15,8 +15,7 @@ This formulation enables evaluation of both:
 
 The resulting trajectories expose the sequence of **entities and relations** used during reasoning, making it possible to distinguish successful navigation from cases where a model arrives at the correct answer through an incorrect or unintended path.
 
-> **Anonymous artifact repository for the manuscript under review.**
-
+> **Anonymous artifact repository for the manuscript under review.** [THESEUS on Anonymous4OpenScience](https://anonymous.4open.science/r/THESEUS-C13C/)
 ---
 
 ## Resources
@@ -57,6 +56,27 @@ Each archive contains the released model artifacts and associated experimental r
 | **MINERVA** | [Pretrained checkpoints](https://www.kaggle.com/models/anonymousexpert/minerva-kgqa) |
 | **MultiHopKG** | [Pretrained checkpoints](https://www.kaggle.com/models/anonymousexpert/multihop-kgqa) |
 | **SQUIRE** | [Model artifacts](https://www.kaggle.com/datasets/anonymousrepo1729/kgqa-models) · [Dataset artifacts](https://www.kaggle.com/datasets/anonymousrepo1729/kgqa-datasets) |
+
+---
+
+### Structural Statistics and Calibration
+
+The repository also provides lightweight, precomputed structural evaluation resources:
+
+| Resource | Description |
+| --- | --- |
+| [`kg_stats/`](kg_stats/) | Knowledge graph structural statistics for KINSHIP, MetaQA, MQuAKE-ST, PQ, PQL, and WC2014. |
+| [`struct_cal/`](struct_cal/) | Exact random-walk answer-reachability summaries (`RW_ANS_p`) for KINSHIP, MetaQA, and the single- and multi-answer MQuAKE-ST settings. |
+
+The `struct_cal/` files report **`RW_ANS_p`**, not Monte Carlo estimates. To locate the reported random-walk answer-reachability metric in these summaries, use the following exact selection:
+
+```yaml
+metric: "RW-Ans@p-actions::Answer-Entity"
+subset: "All"
+aggregation: "instance-micro"
+```
+
+The **Monte Carlo random-walk baseline (`RW_ANS_MC`)** and **Shortest Path Oracle** can be computed using the [anonymous MINERVA implementation](https://anonymous.4open.science/r/MINERVA-EF54/), following its evaluation instructions. Monte Carlo evaluation across random seeds is not included in the precomputed `struct_cal/` summaries.
 
 ---
 
@@ -114,19 +134,22 @@ These releases include explicit reference reasoning paths, enabling evaluation o
 The anonymous resources are organized as follows:
 
 ```text
-THESEUS
-├── Datasets
-│   ├── KINSHIP
-│   └── MQuAKE-ST
-├── Implementations
-│   ├── MINERVA
-│   ├── MultiHopKG
-│   └── SQUIRE
-└── Pretrained checkpoints and evaluation artifacts
-    ├── MINERVA
-    ├── MultiHopKG
-    └── SQUIRE
+THESEUS/
+├── README.md
+├── agent_navigation.gif
+├── kg_stats/
+│   ├── kinship.json
+│   ├── metaqa.json
+│   ├── mquake_st.json
+│   ├── pq.json
+│   ├── pql.json
+│   └── wc2014.json
+└── struct_cal/
+    ├── kinship_qa_rw_summary.json
+    ├── metaqa_qa_rw_summary.json
+    ├── mquake_st_sa_rw_summary.json
+    └── mquake_st_ma_rw_summary.json
 ```
 
-The individual repositories and artifact archives contain the implementation-specific instructions and resources required to reproduce the corresponding experiments.
+The datasets, model implementations, and pretrained checkpoints are hosted externally and linked above. The individual implementation repositories provide their model-specific setup and evaluation instructions.
 
