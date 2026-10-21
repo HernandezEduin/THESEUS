@@ -1,0 +1,407 @@
+{
+  "schema_version": 1,
+  "config": {
+    "triplet_path": "./data/link_prediction/MetaQA/",
+    "question_path": "./data/qa/MetaQA/metaqa_nhop.csv",
+    "test_only": true,
+    "use_full_graph": true,
+    "num_rollout_steps": 3,
+    "use_self_loops": true,
+    "use_undirected_actions": true,
+    "action_space": "undirected",
+    "answer_fields": [
+      "Answer-Entity"
+    ],
+    "use_ideal_paths": false,
+    "explode_paraphrases": false,
+    "family_id_source": "Question-Number",
+    "reference_path_source": "unavailable"
+  },
+  "paraphrase_expansion": {
+    "requested": false,
+    "applied": false,
+    "rows_before": 39093,
+    "rows_after": 39093,
+    "families_before": 39093,
+    "families_after": 39093,
+    "variant_count_mean": 1.0,
+    "variant_count_median": 1.0,
+    "variant_count_max": 1
+  },
+  "evaluation": {
+    "unique_triplets": 133582,
+    "qa_rows": 39093,
+    "families": 39093,
+    "missing_released_reference_paths": 39093
+  },
+  "metric_tables": [
+    {
+      "metric": "RW-Ans@p-actions::Answer-Entity",
+      "label": "RW-Ans@p — uniform labeled actions — target=Answer-Entity",
+      "rows": [
+        {
+          "subset": "All",
+          "aggregation": "instance-micro",
+          "n": 39093,
+          "mean": 0.06874180699431957,
+          "median": 0.04825317154803782,
+          "std": 0.06734936406494453
+        },
+        {
+          "subset": "All",
+          "aggregation": "family-macro",
+          "n": 39093,
+          "mean": 0.06874180699431957,
+          "median": 0.04825317154803782,
+          "std": 0.06734936406494453
+        },
+        {
+          "subset": "1H",
+          "aggregation": "instance-micro",
+          "n": 9947,
+          "mean": 0.1179413581056689,
+          "median": 0.07469859580655036,
+          "std": 0.09900655125269846
+        },
+        {
+          "subset": "1H",
+          "aggregation": "family-macro",
+          "n": 9947,
+          "mean": 0.1179413581056689,
+          "median": 0.07469859580655036,
+          "std": 0.09900655125269846
+        },
+        {
+          "subset": "2H",
+          "aggregation": "instance-micro",
+          "n": 14872,
+          "mean": 0.05665778499510755,
+          "median": 0.04531642226644175,
+          "std": 0.04175488110323257
+        },
+        {
+          "subset": "2H",
+          "aggregation": "family-macro",
+          "n": 14872,
+          "mean": 0.05665778499510755,
+          "median": 0.04531642226644175,
+          "std": 0.04175488110323257
+        },
+        {
+          "subset": "3H",
+          "aggregation": "instance-micro",
+          "n": 14274,
+          "mean": 0.0470468119170945,
+          "median": 0.03951251975637132,
+          "std": 0.03828622417032848
+        },
+        {
+          "subset": "3H",
+          "aggregation": "family-macro",
+          "n": 14274,
+          "mean": 0.0470468119170945,
+          "median": 0.03951251975637132,
+          "std": 0.03828622417032848
+        }
+      ]
+    },
+    {
+      "metric": "RW-Ans@p-neighbors::Answer-Entity",
+      "label": "RW-Ans@p — uniform unique neighbors — target=Answer-Entity",
+      "rows": [
+        {
+          "subset": "All",
+          "aggregation": "instance-micro",
+          "n": 39093,
+          "mean": 0.06368901060524274,
+          "median": 0.04599558742415885,
+          "std": 0.061912924167284285
+        },
+        {
+          "subset": "All",
+          "aggregation": "family-macro",
+          "n": 39093,
+          "mean": 0.06368901060524274,
+          "median": 0.04599558742415885,
+          "std": 0.061912924167284285
+        },
+        {
+          "subset": "1H",
+          "aggregation": "instance-micro",
+          "n": 9947,
+          "mean": 0.10844013920117006,
+          "median": 0.06685344357210883,
+          "std": 0.09175039378283867
+        },
+        {
+          "subset": "1H",
+          "aggregation": "family-macro",
+          "n": 9947,
+          "mean": 0.10844013920117006,
+          "median": 0.06685344357210883,
+          "std": 0.09175039378283867
+        },
+        {
+          "subset": "2H",
+          "aggregation": "instance-micro",
+          "n": 14872,
+          "mean": 0.05587050406586677,
+          "median": 0.045823350045690076,
+          "std": 0.0405452001095289
+        },
+        {
+          "subset": "2H",
+          "aggregation": "family-macro",
+          "n": 14872,
+          "mean": 0.05587050406586677,
+          "median": 0.045823350045690076,
+          "std": 0.0405452001095289
+        },
+        {
+          "subset": "3H",
+          "aggregation": "instance-micro",
+          "n": 14274,
+          "mean": 0.040649733115394805,
+          "median": 0.03449638418286688,
+          "std": 0.030481009466487054
+        },
+        {
+          "subset": "3H",
+          "aggregation": "family-macro",
+          "n": 14274,
+          "mean": 0.040649733115394805,
+          "median": 0.03449638418286688,
+          "std": 0.030481009466487054
+        }
+      ]
+    },
+    {
+      "metric": "Reachable-N-Count",
+      "label": "Distinct entities reachable after N=3 actions",
+      "rows": [
+        {
+          "subset": "All",
+          "aggregation": "instance-micro",
+          "n": 39093,
+          "mean": 8884.066022049983,
+          "median": 6669.0,
+          "std": 6792.89898994578
+        },
+        {
+          "subset": "All",
+          "aggregation": "family-macro",
+          "n": 39093,
+          "mean": 8884.066022049983,
+          "median": 6669.0,
+          "std": 6792.89898994578
+        },
+        {
+          "subset": "1H",
+          "aggregation": "instance-micro",
+          "n": 9947,
+          "mean": 9723.042424851714,
+          "median": 7638.0,
+          "std": 7017.6048056451
+        },
+        {
+          "subset": "1H",
+          "aggregation": "family-macro",
+          "n": 9947,
+          "mean": 9723.042424851714,
+          "median": 7638.0,
+          "std": 7017.6048056451
+        },
+        {
+          "subset": "2H",
+          "aggregation": "instance-micro",
+          "n": 14872,
+          "mean": 6130.8033216783215,
+          "median": 4855.5,
+          "std": 5110.285783138686
+        },
+        {
+          "subset": "2H",
+          "aggregation": "family-macro",
+          "n": 14872,
+          "mean": 6130.8033216783215,
+          "median": 4855.5,
+          "std": 5110.285783138686
+        },
+        {
+          "subset": "3H",
+          "aggregation": "instance-micro",
+          "n": 14274,
+          "mean": 11168.024590163934,
+          "median": 10751.0,
+          "std": 7158.451861450843
+        },
+        {
+          "subset": "3H",
+          "aggregation": "family-macro",
+          "n": 14274,
+          "mean": 11168.024590163934,
+          "median": 10751.0,
+          "std": 7158.451861450843
+        }
+      ]
+    },
+    {
+      "metric": "Released-Answer-Count",
+      "label": "Released answer multiplicity",
+      "rows": [
+        {
+          "subset": "All",
+          "aggregation": "instance-micro",
+          "n": 39093,
+          "mean": 7.745095029800732,
+          "median": 2.0,
+          "std": 14.466679119512392
+        },
+        {
+          "subset": "All",
+          "aggregation": "family-macro",
+          "n": 39093,
+          "mean": 7.745095029800732,
+          "median": 2.0,
+          "std": 14.466679119512392
+        },
+        {
+          "subset": "1H",
+          "aggregation": "instance-micro",
+          "n": 9947,
+          "mean": 1.9449080124660703,
+          "median": 1.0,
+          "std": 2.5297627093704786
+        },
+        {
+          "subset": "1H",
+          "aggregation": "family-macro",
+          "n": 9947,
+          "mean": 1.9449080124660703,
+          "median": 1.0,
+          "std": 2.5297627093704786
+        },
+        {
+          "subset": "2H",
+          "aggregation": "instance-micro",
+          "n": 14872,
+          "mean": 6.2078402366863905,
+          "median": 2.0,
+          "std": 12.277378988164198
+        },
+        {
+          "subset": "2H",
+          "aggregation": "family-macro",
+          "n": 14872,
+          "mean": 6.2078402366863905,
+          "median": 2.0,
+          "std": 12.277378988164198
+        },
+        {
+          "subset": "3H",
+          "aggregation": "instance-micro",
+          "n": 14274,
+          "mean": 13.388678716547568,
+          "median": 6.0,
+          "std": 18.81263413773483
+        },
+        {
+          "subset": "3H",
+          "aggregation": "family-macro",
+          "n": 14274,
+          "mean": 13.388678716547568,
+          "median": 6.0,
+          "std": 18.81263413773483
+        }
+      ]
+    },
+    {
+      "metric": "Topic-Is-Released-Answer",
+      "label": "Fraction / indicator: topic is a released answer",
+      "rows": [
+        {
+          "subset": "All",
+          "aggregation": "instance-micro",
+          "n": 39093,
+          "mean": 7.674008134448623e-05,
+          "median": 0.0,
+          "std": 0.008759805494667185
+        },
+        {
+          "subset": "All",
+          "aggregation": "family-macro",
+          "n": 39093,
+          "mean": 7.674008134448623e-05,
+          "median": 0.0,
+          "std": 0.008759805494667185
+        },
+        {
+          "subset": "1H",
+          "aggregation": "instance-micro",
+          "n": 9947,
+          "mean": 0.0003015984719010757,
+          "median": 0.0,
+          "std": 0.01736397161546927
+        },
+        {
+          "subset": "1H",
+          "aggregation": "family-macro",
+          "n": 9947,
+          "mean": 0.0003015984719010757,
+          "median": 0.0,
+          "std": 0.01736397161546927
+        },
+        {
+          "subset": "2H",
+          "aggregation": "instance-micro",
+          "n": 14872,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        },
+        {
+          "subset": "2H",
+          "aggregation": "family-macro",
+          "n": 14872,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        },
+        {
+          "subset": "3H",
+          "aggregation": "instance-micro",
+          "n": 14274,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        },
+        {
+          "subset": "3H",
+          "aggregation": "family-macro",
+          "n": 14274,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        }
+      ]
+    }
+  ],
+  "distributions": {},
+  "outputs": {
+    "per_qa_csv": "./results/struct_cal/metaqa_qa_calibration.csv",
+    "summary_json": "./results/struct_cal/metaqa_qa_rw_summary.json",
+    "per_qa_csv_columns": [
+      "Question-Number",
+      "Question",
+      "Question-Family-ID",
+      "Hops",
+      "Reachable-N-Count",
+      "Answer-Count::Answer-Entity",
+      "RW-Ans@p-actions::Answer-Entity",
+      "RW-Ans@p-neighbors::Answer-Entity",
+      "Released-Answer-Count",
+      "Topic-Is-Released-Answer",
+      "Reference-Path-Count"
+    ]
+  }
+}

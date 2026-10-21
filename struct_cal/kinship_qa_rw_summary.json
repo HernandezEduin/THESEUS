@@ -1,0 +1,635 @@
+{
+  "schema_version": 1,
+  "config": {
+    "triplet_path": "./data/link_prediction/KinshipHinton/orig/",
+    "question_path": "./data/qa/KinshipHinton_V2/kinship_qa_nhop.csv",
+    "test_only": true,
+    "use_full_graph": true,
+    "num_rollout_steps": 3,
+    "use_self_loops": true,
+    "use_undirected_actions": false,
+    "action_space": "directed_outgoing",
+    "answer_fields": [
+      "Answer-Entity"
+    ],
+    "use_ideal_paths": true,
+    "explode_paraphrases": true,
+    "family_id_source": "Question-Number",
+    "reference_path_source": "Paths"
+  },
+  "paraphrase_expansion": {
+    "requested": true,
+    "applied": true,
+    "rows_before": 101,
+    "rows_after": 404,
+    "families_before": 101,
+    "families_after": 101,
+    "variant_count_mean": 4.0,
+    "variant_count_median": 4.0,
+    "variant_count_max": 4
+  },
+  "evaluation": {
+    "unique_triplets": 112,
+    "qa_rows": 404,
+    "families": 101,
+    "missing_released_reference_paths": 0
+  },
+  "metric_tables": [
+    {
+      "metric": "RW-Ans@p-actions::Answer-Entity",
+      "label": "RW-Ans@p — uniform labeled actions — target=Answer-Entity",
+      "rows": [
+        {
+          "subset": "All",
+          "aggregation": "instance-micro",
+          "n": 404,
+          "mean": 0.09144704557919346,
+          "median": 0.08801020408163265,
+          "std": 0.042644872691521236
+        },
+        {
+          "subset": "All",
+          "aggregation": "family-macro",
+          "n": 101,
+          "mean": 0.09144704557919345,
+          "median": 0.08801020408163265,
+          "std": 0.042644872691521236
+        },
+        {
+          "subset": "2H",
+          "aggregation": "instance-micro",
+          "n": 152,
+          "mean": 0.11013383266840569,
+          "median": 0.11133381924198248,
+          "std": 0.04458978018073061
+        },
+        {
+          "subset": "2H",
+          "aggregation": "family-macro",
+          "n": 38,
+          "mean": 0.11013383266840569,
+          "median": 0.11133381924198248,
+          "std": 0.04458978018073061
+        },
+        {
+          "subset": "3H",
+          "aggregation": "instance-micro",
+          "n": 252,
+          "mean": 0.08017565019204959,
+          "median": 0.08801020408163264,
+          "std": 0.03712920731103614
+        },
+        {
+          "subset": "3H",
+          "aggregation": "family-macro",
+          "n": 63,
+          "mean": 0.08017565019204963,
+          "median": 0.08801020408163264,
+          "std": 0.03712920731103614
+        }
+      ]
+    },
+    {
+      "metric": "RW-Ans@p-neighbors::Answer-Entity",
+      "label": "RW-Ans@p — uniform unique neighbors — target=Answer-Entity",
+      "rows": [
+        {
+          "subset": "All",
+          "aggregation": "instance-micro",
+          "n": 404,
+          "mean": 0.09144704557919346,
+          "median": 0.08801020408163265,
+          "std": 0.042644872691521236
+        },
+        {
+          "subset": "All",
+          "aggregation": "family-macro",
+          "n": 101,
+          "mean": 0.09144704557919345,
+          "median": 0.08801020408163265,
+          "std": 0.042644872691521236
+        },
+        {
+          "subset": "2H",
+          "aggregation": "instance-micro",
+          "n": 152,
+          "mean": 0.11013383266840569,
+          "median": 0.11133381924198248,
+          "std": 0.04458978018073061
+        },
+        {
+          "subset": "2H",
+          "aggregation": "family-macro",
+          "n": 38,
+          "mean": 0.11013383266840569,
+          "median": 0.11133381924198248,
+          "std": 0.04458978018073061
+        },
+        {
+          "subset": "3H",
+          "aggregation": "instance-micro",
+          "n": 252,
+          "mean": 0.08017565019204959,
+          "median": 0.08801020408163265,
+          "std": 0.03712920731103614
+        },
+        {
+          "subset": "3H",
+          "aggregation": "family-macro",
+          "n": 63,
+          "mean": 0.08017565019204961,
+          "median": 0.08801020408163265,
+          "std": 0.03712920731103614
+        }
+      ]
+    },
+    {
+      "metric": "RW-RefPath@p-actions",
+      "label": "RW-RefPath@p — probability of any released annotated reference path",
+      "rows": [
+        {
+          "subset": "All",
+          "aggregation": "instance-micro",
+          "n": 404,
+          "mean": 0.004510177921946713,
+          "median": 0.004464285714285714,
+          "std": 0.0020170824355919643
+        },
+        {
+          "subset": "All",
+          "aggregation": "family-macro",
+          "n": 101,
+          "mean": 0.004510177921946713,
+          "median": 0.004464285714285714,
+          "std": 0.0020170824355919647
+        },
+        {
+          "subset": "2H",
+          "aggregation": "instance-micro",
+          "n": 152,
+          "mean": 0.00449155813641246,
+          "median": 0.004464285714285714,
+          "std": 0.0020573387725810782
+        },
+        {
+          "subset": "2H",
+          "aggregation": "family-macro",
+          "n": 38,
+          "mean": 0.004491558136412459,
+          "median": 0.004464285714285714,
+          "std": 0.0020573387725810782
+        },
+        {
+          "subset": "3H",
+          "aggregation": "instance-micro",
+          "n": 252,
+          "mean": 0.004521408903697533,
+          "median": 0.004464285714285714,
+          "std": 0.001992323475789342
+        },
+        {
+          "subset": "3H",
+          "aggregation": "family-macro",
+          "n": 63,
+          "mean": 0.004521408903697532,
+          "median": 0.004464285714285714,
+          "std": 0.001992323475789342
+        }
+      ]
+    },
+    {
+      "metric": "Reachable-N-Count",
+      "label": "Distinct entities reachable after N=3 actions",
+      "rows": [
+        {
+          "subset": "All",
+          "aggregation": "instance-micro",
+          "n": 404,
+          "mean": 12.0,
+          "median": 12.0,
+          "std": 0.0
+        },
+        {
+          "subset": "All",
+          "aggregation": "family-macro",
+          "n": 101,
+          "mean": 12.0,
+          "median": 12.0,
+          "std": 0.0
+        },
+        {
+          "subset": "2H",
+          "aggregation": "instance-micro",
+          "n": 152,
+          "mean": 12.0,
+          "median": 12.0,
+          "std": 0.0
+        },
+        {
+          "subset": "2H",
+          "aggregation": "family-macro",
+          "n": 38,
+          "mean": 12.0,
+          "median": 12.0,
+          "std": 0.0
+        },
+        {
+          "subset": "3H",
+          "aggregation": "instance-micro",
+          "n": 252,
+          "mean": 12.0,
+          "median": 12.0,
+          "std": 0.0
+        },
+        {
+          "subset": "3H",
+          "aggregation": "family-macro",
+          "n": 63,
+          "mean": 12.0,
+          "median": 12.0,
+          "std": 0.0
+        }
+      ]
+    },
+    {
+      "metric": "Released-Answer-Count",
+      "label": "Released answer multiplicity",
+      "rows": [
+        {
+          "subset": "All",
+          "aggregation": "instance-micro",
+          "n": 404,
+          "mean": 1.0,
+          "median": 1.0,
+          "std": 0.0
+        },
+        {
+          "subset": "All",
+          "aggregation": "family-macro",
+          "n": 101,
+          "mean": 1.0,
+          "median": 1.0,
+          "std": 0.0
+        },
+        {
+          "subset": "2H",
+          "aggregation": "instance-micro",
+          "n": 152,
+          "mean": 1.0,
+          "median": 1.0,
+          "std": 0.0
+        },
+        {
+          "subset": "2H",
+          "aggregation": "family-macro",
+          "n": 38,
+          "mean": 1.0,
+          "median": 1.0,
+          "std": 0.0
+        },
+        {
+          "subset": "3H",
+          "aggregation": "instance-micro",
+          "n": 252,
+          "mean": 1.0,
+          "median": 1.0,
+          "std": 0.0
+        },
+        {
+          "subset": "3H",
+          "aggregation": "family-macro",
+          "n": 63,
+          "mean": 1.0,
+          "median": 1.0,
+          "std": 0.0
+        }
+      ]
+    },
+    {
+      "metric": "Topic-Is-Released-Answer",
+      "label": "Fraction / indicator: topic is a released answer",
+      "rows": [
+        {
+          "subset": "All",
+          "aggregation": "instance-micro",
+          "n": 404,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        },
+        {
+          "subset": "All",
+          "aggregation": "family-macro",
+          "n": 101,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        },
+        {
+          "subset": "2H",
+          "aggregation": "instance-micro",
+          "n": 152,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        },
+        {
+          "subset": "2H",
+          "aggregation": "family-macro",
+          "n": 38,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        },
+        {
+          "subset": "3H",
+          "aggregation": "instance-micro",
+          "n": 252,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        },
+        {
+          "subset": "3H",
+          "aggregation": "family-macro",
+          "n": 63,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        }
+      ]
+    },
+    {
+      "metric": "Released-Reference-Has-Cycle",
+      "label": "Fraction / indicator: released reference set contains a cyclic path",
+      "rows": [
+        {
+          "subset": "All",
+          "aggregation": "instance-micro",
+          "n": 404,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        },
+        {
+          "subset": "All",
+          "aggregation": "family-macro",
+          "n": 101,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        },
+        {
+          "subset": "2H",
+          "aggregation": "instance-micro",
+          "n": 152,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        },
+        {
+          "subset": "2H",
+          "aggregation": "family-macro",
+          "n": 38,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        },
+        {
+          "subset": "3H",
+          "aggregation": "instance-micro",
+          "n": 252,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        },
+        {
+          "subset": "3H",
+          "aggregation": "family-macro",
+          "n": 63,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        }
+      ]
+    },
+    {
+      "metric": "Released-Reference-Has-Immediate-Backtrack",
+      "label": "Fraction / indicator: released reference set contains an immediate backtrack",
+      "rows": [
+        {
+          "subset": "All",
+          "aggregation": "instance-micro",
+          "n": 404,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        },
+        {
+          "subset": "All",
+          "aggregation": "family-macro",
+          "n": 101,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        },
+        {
+          "subset": "2H",
+          "aggregation": "instance-micro",
+          "n": 152,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        },
+        {
+          "subset": "2H",
+          "aggregation": "family-macro",
+          "n": 38,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        },
+        {
+          "subset": "3H",
+          "aggregation": "instance-micro",
+          "n": 252,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        },
+        {
+          "subset": "3H",
+          "aggregation": "family-macro",
+          "n": 63,
+          "mean": 0.0,
+          "median": 0.0,
+          "std": 0.0
+        }
+      ]
+    },
+    {
+      "metric": "Ref-Actions-Mean",
+      "label": "Per-QA mean actions along released reference states",
+      "rows": [
+        {
+          "subset": "All",
+          "aggregation": "instance-micro",
+          "n": 404,
+          "mean": 6.417491749174919,
+          "median": 6.333333333333333,
+          "std": 0.9288860814126536
+        },
+        {
+          "subset": "All",
+          "aggregation": "family-macro",
+          "n": 101,
+          "mean": 6.417491749174917,
+          "median": 6.333333333333333,
+          "std": 0.9288860814126534
+        },
+        {
+          "subset": "2H",
+          "aggregation": "instance-micro",
+          "n": 152,
+          "mean": 6.407894736842105,
+          "median": 7.0,
+          "std": 1.1288982936211394
+        },
+        {
+          "subset": "2H",
+          "aggregation": "family-macro",
+          "n": 38,
+          "mean": 6.407894736842105,
+          "median": 7.0,
+          "std": 1.1288982936211394
+        },
+        {
+          "subset": "3H",
+          "aggregation": "instance-micro",
+          "n": 252,
+          "mean": 6.423280423280423,
+          "median": 6.333333333333333,
+          "std": 0.7838906026470398
+        },
+        {
+          "subset": "3H",
+          "aggregation": "family-macro",
+          "n": 63,
+          "mean": 6.4232804232804215,
+          "median": 6.333333333333333,
+          "std": 0.7838906026470398
+        }
+      ]
+    },
+    {
+      "metric": "Ref-Relations-Mean",
+      "label": "Per-QA mean distinct outgoing relations along released reference states",
+      "rows": [
+        {
+          "subset": "All",
+          "aggregation": "instance-micro",
+          "n": 404,
+          "mean": 6.057755775577557,
+          "median": 6.0,
+          "std": 0.7088299146799538
+        },
+        {
+          "subset": "All",
+          "aggregation": "family-macro",
+          "n": 101,
+          "mean": 6.057755775577557,
+          "median": 6.0,
+          "std": 0.7088299146799537
+        },
+        {
+          "subset": "2H",
+          "aggregation": "instance-micro",
+          "n": 152,
+          "mean": 6.0131578947368425,
+          "median": 6.25,
+          "std": 0.8544530576344326
+        },
+        {
+          "subset": "2H",
+          "aggregation": "family-macro",
+          "n": 38,
+          "mean": 6.0131578947368425,
+          "median": 6.25,
+          "std": 0.8544530576344327
+        },
+        {
+          "subset": "3H",
+          "aggregation": "instance-micro",
+          "n": 252,
+          "mean": 6.084656084656085,
+          "median": 6.0,
+          "std": 0.6026638513309657
+        },
+        {
+          "subset": "3H",
+          "aggregation": "family-macro",
+          "n": 63,
+          "mean": 6.084656084656086,
+          "median": 6.0,
+          "std": 0.6026638513309656
+        }
+      ]
+    }
+  ],
+  "distributions": {
+    "reference_state_actions": {
+      "n": 1060,
+      "mean": 6.418867924528302,
+      "median": 7.0,
+      "std": 1.4543437350011867,
+      "p90": 8.0,
+      "p95": 8.0,
+      "p99": 8.0,
+      "max": 8.0,
+      "fraction_gt10": 0.0,
+      "fraction_gt50": 0.0,
+      "fraction_gt100": 0.0
+    },
+    "reference_state_relations": {
+      "n": 1060,
+      "mean": 6.064150943396227,
+      "median": 7.0,
+      "std": 1.2557932679916197,
+      "p90": 7.0,
+      "p95": 7.0,
+      "p99": 7.0,
+      "max": 7.0
+    }
+  },
+  "outputs": {
+    "per_qa_csv": "./results/struct_cal/kinship_qa_calibration.csv",
+    "summary_json": "./results/struct_cal/kinship_qa_rw_summary.json",
+    "per_qa_csv_columns": [
+      "Question-Number",
+      "Question",
+      "Question-Family-ID",
+      "Hops",
+      "Reachable-N-Count",
+      "Answer-Count::Answer-Entity",
+      "RW-Ans@p-actions::Answer-Entity",
+      "RW-Ans@p-neighbors::Answer-Entity",
+      "Released-Answer-Count",
+      "Topic-Is-Released-Answer",
+      "Reference-Path-Count",
+      "Released-Reference-Has-Cycle",
+      "Released-Reference-Has-Immediate-Backtrack",
+      "Reference-State-Count",
+      "Ref-Actions-Mean",
+      "Ref-Actions-Median",
+      "Ref-Actions-P95",
+      "Ref-Actions-Max",
+      "Ref-Actions-Frac-GT10",
+      "Ref-Actions-Frac-GT50",
+      "Ref-Actions-Frac-GT100",
+      "Ref-Relations-Mean",
+      "Ref-Relations-P95",
+      "Ref-Relations-Max",
+      "RW-RefPath@p-actions"
+    ]
+  }
+}
